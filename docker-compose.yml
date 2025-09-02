@@ -2,7 +2,7 @@ services:
   web:
     build:
       context: ./web
-      dockerfile: Dockerfile.web
+      dockerfile: Dockerfile
     image: ${REGISTRY}/${WEB_IMAGE}:${TAG}
     ports:
       - "8200:8200"
@@ -12,10 +12,11 @@ services:
   db:
     build:
       context: ./db
-      dockerfile: Dockerfile.mysql
+      dockerfile: Dockerfile
     image: ${REGISTRY}/${DB_IMAGE}:${TAG}
     volumes:
       - mysql_data:/var/lib/mysql
  
 volumes:
+
   mysql_data:
