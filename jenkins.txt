@@ -1,0 +1,6 @@
+environment {
+        REGISTRY   = "docker.io/seuusuario"    // seu registry (Docker Hub, GitLab Registry, etc.)
+        WEB_IMAGE  = "flask-web"
+        DB_IMAGE   = "mysql-db"
+        TAG        = "latest"
+    }
