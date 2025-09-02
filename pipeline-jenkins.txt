@@ -6,8 +6,6 @@ pipeline {
         stage('Cleanup') {
             steps {
                 echo 'Deletando arquivos...'
-                //deleteDir()
-                //sh 'docker stop myweb mydb'
                 sh 'rm -rf DevOPS'
             }
         }
@@ -15,7 +13,6 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Baixando repositório...'
-                //sh 'git clone https://github.com/juliajohnsonmelo/DevOPS.git'
                 git branch: 'main', url: 'https://github.com/juliajohnsonmelo/DevOPS.git'
             }
         }
@@ -59,7 +56,6 @@ pipeline {
         stage('Push images'){
             steps{
                 script {
-                    //echo "Realizando push das imagens"
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-cred', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
                         sh "echo $PASS | docker login -u $USER --password-stdin"
                     }
@@ -71,7 +67,6 @@ pipeline {
                             sh "docker push xoulea/myapp-web:latest"
                         }
                     )
-                    
                     sh "docker logout"
                 }
             }
